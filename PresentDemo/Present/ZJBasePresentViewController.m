@@ -11,9 +11,9 @@
 #import "ZJPresentationController.h"
 
 @interface ZJBasePresentViewController ()<UIViewControllerTransitioningDelegate>
+
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition*
 interactiveTransition;
-
 
 @end
 

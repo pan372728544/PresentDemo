@@ -46,10 +46,5 @@
     
 }
 
--(void)setColorBack:(UIColor *)colorBack
-{
-    _colorBack= colorBack;
-}
-
 @end
 

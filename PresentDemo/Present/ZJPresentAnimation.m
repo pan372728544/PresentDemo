@@ -25,64 +25,48 @@
 // 自定义转成动画具体实现
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     
-    // 获取viewcontroller
+    // 到哪个vc
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
+    // 从哪个vc来
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
-    UIView* toView = nil;
-    UIView* fromView = nil;
-    UIView* transView = nil;
-    UIView *contentView = nil;
+    // 获取过渡时候的容器view
+    UIView *contentView  = [transitionContext containerView];;
     
     
-    
-    for (UIView *subView in [[transitionContext containerView] subviews]) {
-        if (subView.tag == 1001 || subView.tag == 1002) {
+    // 移除之前的
+    for (UIView *subView in [contentView subviews]) {
+        if (subView.tag == 1001 ) {
             [subView removeFromSuperview];
         }
     }
-    contentView = [transitionContext containerView];
     
-    // 获取view
-    if ([transitionContext respondsToSelector:@selector(viewForKey:)]) {
-        fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
-        toView = [transitionContext viewForKey:UITransitionContextToViewKey];
-    } else {
-        fromView = fromViewController.view;
-        toView = toViewController.view;
-    }
-    
+    UIView * transView = nil;
     // 如果是present
     if (_presented) {
         // 记录present的view
-        transView = toView;
+        transView = toViewController.view;
         
-    }else {
-        transView = fromView;
     }
-    
-    [contentView addSubview:transView];
-    //    [[transitionContext containerView] insertSubview:transView aboveSubview:self.viewCover];
-    
+    else {
+        transView = fromViewController.view;
+    }
     
     // y值
     CGFloat y = transView.frame.origin.y;
-    
     transView.frame = CGRectMake(0, _presented ?SCREEN_H :y, SCREEN_W, SCREEN_H);
     
+    // 黑色背景
+    UIView  *viewCover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H)];
+    viewCover.backgroundColor = [UIColor blackColor];
+    viewCover.alpha = 0.5;
+    viewCover.tag = 1001;
+    [contentView insertSubview:viewCover belowSubview:transView];
     
     if (_presented) {
         
-        
-        
-        UIView   *viewCoverf = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H)];
-        viewCoverf.backgroundColor = [UIColor blackColor];
-        viewCoverf.alpha = 0.5;
-        viewCoverf.tag = 1001;
-        [contentView insertSubview:viewCoverf belowSubview:transView];
-        
-        
+        // 执行动画过程
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionLayoutSubviews animations:^{
             transView.frame = CGRectMake(0, y , SCREEN_W, SCREEN_H);
         } completion:^(BOOL finished) {
@@ -92,21 +76,13 @@
     }
     else
     {
-        
-        
-        
-        UIView   *viewCovert = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H)];
-        viewCovert.backgroundColor = [UIColor blackColor];
-        viewCovert.alpha = 0.5;
-        viewCovert.tag = 1002;
-        [contentView insertSubview:viewCovert belowSubview:transView];
-        
+        // 下拉动画
         [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             transView.frame = CGRectMake(0, SCREEN_H, SCREEN_W, SCREEN_H);
-            viewCovert.alpha= 0;
+            viewCover.alpha= 0;
         } completion:^(BOOL finished) {
             if (!transitionContext.transitionWasCancelled) {
-                [viewCovert removeFromSuperview];
+                [viewCover removeFromSuperview];
             }
             
             [transitionContext completeTransition:!transitionContext.transitionWasCancelled];

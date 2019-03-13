@@ -16,9 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)CGFloat height;
 
 
-
-@property(nonatomic,strong) UIColor *colorBack;
-
 @end
 
 NS_ASSUME_NONNULL_END
