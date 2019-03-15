@@ -1,27 +1,25 @@
 //
-//  SecondViewController.m
+//  ThirdViewController.m
 //  PresentDemo
 //
-//  Created by panzhijun on 2019/3/13.
+//  Created by panzhijun on 2019/3/15.
 //  Copyright © 2019 panzhijun. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "ThirdViewController.h"
 
-@interface SecondViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate,UITableViewDataSourcePrefetching>
+@interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate,UITableViewDataSourcePrefetching>
 
 @property(nonatomic,strong)UITableView *tableView;
 
 @end
 
-@implementation SecondViewController
+@implementation ThirdViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-   
-    // 设置支持 下拉返回和又滑返回
-    self.isSupportRightSlide = YES;
+    
     
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_W-24-10, 10, 24, 24)];
     [btn setBackgroundImage:[UIImage imageNamed:@"close_channel_24x24_"] forState:UIControlStateNormal];
@@ -64,7 +62,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"SecondTest--%ld",indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"ThirdTest--%ld",indexPath.row];
     return cell;
     
 }
@@ -115,11 +113,6 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // tableview滑动的时候 传递滑动方向
-    if (scrollView.contentOffset.x==scrollView.contentOffset.y) {
-        self.isUp = YES;
-    }
-    
     // 滑动到顶部的时候设置手势失效
     if (scrollView.contentOffset.y <=0) {
         
@@ -142,6 +135,5 @@
         }
     }
 }
-
 
 @end

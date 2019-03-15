@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 //用于记录控制器是创建还是销毁
 @property (nonatomic, assign ) BOOL presented;
 
+// 左右滑动
+@property (nonatomic, assign ) BOOL isRight;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -76,17 +76,35 @@
     }
     else
     {
-        // 下拉动画
-        [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            transView.frame = CGRectMake(0, SCREEN_H, SCREEN_W, SCREEN_H);
-            viewCover.alpha= 0;
-        } completion:^(BOOL finished) {
-            if (!transitionContext.transitionWasCancelled) {
-                [viewCover removeFromSuperview];
-            }
+        // 右滑返回
+        if (self.isRight) {
             
-            [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
-        }];
+            [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                transView.frame = CGRectMake(SCREEN_W, y, SCREEN_W, SCREEN_H);
+                viewCover.alpha= 0;
+            } completion:^(BOOL finished) {
+                if (!transitionContext.transitionWasCancelled) {
+                    [viewCover removeFromSuperview];
+                }
+                
+                [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
+            }];
+        }
+        
+        else
+        {
+            // 下拉动画
+            [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                transView.frame = CGRectMake(0, SCREEN_H, SCREEN_W, SCREEN_H);
+                viewCover.alpha= 0;
+            } completion:^(BOOL finished) {
+                if (!transitionContext.transitionWasCancelled) {
+                    [viewCover removeFromSuperview];
+                }
+                
+                [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
+            }];
+        }
     }
 }
 

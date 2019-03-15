@@ -18,6 +18,7 @@
 		38683C412238FA7D00292FE0 /* ZJPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38683C402238FA7D00292FE0 /* ZJPresentationController.m */; };
 		38683C442238FA9600292FE0 /* ZJBasePresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38683C432238FA9600292FE0 /* ZJBasePresentViewController.m */; };
 		38683C482238FF1E00292FE0 /* close_channel_24x24_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38683C472238FF1E00292FE0 /* close_channel_24x24_@3x.png */; };
+		38683C4B223BB4D500292FE0 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38683C4A223BB4D500292FE0 /* ThirdViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		38683C452238FC2800292FE0 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		38683C462238FCF900292FE0 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		38683C472238FF1E00292FE0 /* close_channel_24x24_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_channel_24x24_@3x.png"; sourceTree = "<group>"; };
+		38683C49223BB4D500292FE0 /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		38683C4A223BB4D500292FE0 /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				38683C262238F82C00292FE0 /* ViewController.m */,
 				38683C382238F92900292FE0 /* SecondViewController.h */,
 				38683C392238F92900292FE0 /* SecondViewController.m */,
+				38683C49223BB4D500292FE0 /* ThirdViewController.h */,
+				38683C4A223BB4D500292FE0 /* ThirdViewController.m */,
 				38683C452238FC2800292FE0 /* Header.h */,
 				38683C462238FCF900292FE0 /* PrefixHeader.pch */,
 				38683C472238FF1E00292FE0 /* close_channel_24x24_@3x.png */,
@@ -179,6 +184,7 @@
 			files = (
 				38683C3A2238F92900292FE0 /* SecondViewController.m in Sources */,
 				38683C412238FA7D00292FE0 /* ZJPresentationController.m in Sources */,
+				38683C4B223BB4D500292FE0 /* ThirdViewController.m in Sources */,
 				38683C3E2238FA0A00292FE0 /* ZJPresentAnimation.m in Sources */,
 				38683C442238FA9600292FE0 /* ZJBasePresentViewController.m in Sources */,
 				38683C272238F82C00292FE0 /* ViewController.m in Sources */,
@@ -325,15 +331,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = KYACQ4K486;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresentDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = PresentDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PresentDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gome.gomeEShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Dev_GM_GomeEShop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -342,15 +352,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = KYACQ4K486;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresentDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = PresentDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PresentDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gome.gomeEShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Dev_GM_GomeEShop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
